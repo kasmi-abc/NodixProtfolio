@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NODIX Systems — Mister Wael
 
-## Getting Started
+AI automation portfolio and client intake site. Bilingual (EN/AR with RTL), dark + cyan identity, interactive system graph hero, project gallery, and a client project form.
 
-First, run the development server:
+v1.2.0 — Stable. See CHANGELOG section below for newer versions.
+
+## Stack
+
+Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · lucide-react icons
+
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production check
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Configure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` and set values:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `NEXT_PUBLIC_SITE_URL` — production domain (sitemap, robots, SEO).
+- `NEXT_PUBLIC_FORM_ENDPOINT` — optional POST target for project requests
+  (n8n webhook, Formspree, etc.). When unset, the form confirms locally only.
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Any Next.js host works (Vercel recommended). Set the env vars above in the
+host dashboard, then deploy. No database, no secrets in code.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## CHANGELOG
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- v1.2.0 — Bilingual EN/AR, interactive node-graph hero, scroll transitions,
+  professional footer, security headers, sitemap/robots, env-based form endpoint.
+- v1.1.0 — Full one-page portfolio from `form.txt` + `portfolio.txt` content.
+- v1.0.0 — Initial Next.js + Tailwind scaffold.
