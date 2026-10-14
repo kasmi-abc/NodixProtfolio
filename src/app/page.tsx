@@ -494,7 +494,7 @@ const nodeIcons = [MessageCircle, Bot, Database, Workflow, Send];
 const INSTAGRAM_URL = "https://www.instagram.com/nodix.core/";
 
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "213655886880";
-const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "kasmihaithem3@gmail.com";
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "nodix.systems10@gmail.com";
 const TELEGRAM_URL = process.env.NEXT_PUBLIC_TELEGRAM_URL || "https://t.me/nodix_core";
 // فيديو العرض: ملف محلي + يمكن تجاوزه عبر NEXT_PUBLIC_DEMO_VIDEO_URL
 const DEMO_VIDEO_URL = process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || "/nodix-demo.mp4";
@@ -561,11 +561,11 @@ function Reveal({
 /* ================= interactive node graph ================= */
 
 const NODE_POS = [
-  { left: "50%", top: "4%", x: 200, y: 16 },
-  { left: "7%", top: "35%", x: 28, y: 140 },
-  { left: "93%", top: "35%", x: 372, y: 140 },
-  { left: "21%", top: "88%", x: 84, y: 352 },
-  { left: "79%", top: "88%", x: 316, y: 352 },
+  { left: "50%", top: "5%", x: 200, y: 20 },
+  { left: "13%", top: "36%", x: 52, y: 144 },
+  { left: "87%", top: "36%", x: 348, y: 144 },
+  { left: "24%", top: "86%", x: 96, y: 344 },
+  { left: "76%", top: "86%", x: 304, y: 344 },
 ];
 
 function NodeGraph({ t }: { t: Dict }) {
@@ -619,13 +619,13 @@ function NodeGraph({ t }: { t: Dict }) {
 
         {/* core */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="core-glow float-slow flex h-24 w-24 items-center justify-center rounded-full bg-white p-1.5">
+          <div className="core-glow float-slow h-24 w-24 overflow-hidden rounded-full bg-nodix-dark ring-2 ring-nodix-cyan/70">
             <Image
               src="/nodixlogo.jpg"
               alt="NODIX core"
-              width={88}
-              height={88}
-              className="h-full w-full rounded-full object-cover"
+              width={96}
+              height={96}
+              className="h-full w-full object-cover"
             />
           </div>
           <p className="mt-1 text-center text-[10px] font-extrabold tracking-[0.25em] text-nodix-cyan">NODIX CORE</p>
@@ -640,7 +640,7 @@ function NodeGraph({ t }: { t: Dict }) {
               key={i}
               onClick={() => setActive(i)}
               style={{ left: n.left, top: n.top }}
-              className={`absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 rounded-2xl border px-2.5 py-2 backdrop-blur transition-all duration-300 ${
+              className={`absolute flex min-h-[68px] w-[106px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-2xl border px-2 py-2 backdrop-blur transition-all duration-300 ${
                 isActive
                   ? "scale-110 border-nodix-cyan bg-nodix-cyan/20 shadow-[0_0_25px_rgba(91,213,224,0.45)]"
                   : "border-white/15 bg-nodix-dark/90 hover:border-nodix-cyan/60 hover:scale-105"
@@ -653,7 +653,7 @@ function NodeGraph({ t }: { t: Dict }) {
                   {i + 1}
                 </span>
               </span>
-              <span className="max-w-[92px] text-center text-[9px] font-bold leading-tight text-white">
+              <span className="text-center text-[9px] font-bold leading-tight text-white">
                 {t.graphNodes[i].title}
               </span>
             </button>
@@ -1084,12 +1084,14 @@ export default function Home() {
                 const Icon = stackIcons[i];
                 const chips = String(b).split(" / ").map((s) => s.trim()).filter(Boolean);
                 return (
-                  <div key={a} className="card-lift flex items-start gap-3 rounded-2xl border border-nodix-line bg-nodix-bg p-3 hover:border-nodix-cyan">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
-                      <Icon className="h-4 w-4" />
-                    </span>
-                    <span className="min-w-[92px] pt-1.5 font-bold">{a}</span>
-                    <span className="flex flex-wrap gap-1.5 pt-1">
+                  <div key={a} className="card-lift rounded-2xl border border-nodix-line bg-nodix-bg p-3 hover:border-nodix-cyan">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <span className="font-bold">{a}</span>
+                    </div>
+                    <div className="mt-2 flex flex-wrap gap-1.5 ps-12">
                       {chips.map((c) =>
                         c === "+more" ? (
                           <span key={c + a} className="rounded-full bg-nodix-dark px-2.5 py-0.5 text-[11px] font-extrabold text-nodix-cyan">
@@ -1101,7 +1103,7 @@ export default function Home() {
                           </span>
                         )
                       )}
-                    </span>
+                    </div>
                   </div>
                 );
               })}
@@ -1491,16 +1493,46 @@ export default function Home() {
                 </span>
               </a>
               <p className="mt-4 max-w-xs text-xs leading-6 text-white/55">{t.footerTagline}</p>
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:border-nodix-cyan hover:text-nodix-cyan"
-              >
-                <InstagramIcon className="h-4 w-4 text-nodix-cyan" />
-                nodix.core
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
-              </a>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:border-nodix-cyan hover:text-nodix-cyan"
+                >
+                  <InstagramIcon className="h-4 w-4 text-nodix-cyan" />
+                  nodix.core
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
+                </a>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "en" ? "Hi Mister Wael, I have a project." : "سلام مستر وائل، عندي مشروع.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:border-nodix-cyan hover:text-nodix-cyan"
+                >
+                  <Phone className="h-4 w-4 text-nodix-cyan" />
+                  WhatsApp
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
+                </a>
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:border-nodix-cyan hover:text-nodix-cyan"
+                >
+                  <Send className="h-4 w-4 text-nodix-cyan" />
+                  nodix_core
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
+                </a>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="inline-flex max-w-full items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold transition hover:-translate-y-0.5 hover:border-nodix-cyan hover:text-nodix-cyan"
+                >
+                  <Mail className="h-4 w-4 shrink-0 text-nodix-cyan" />
+                  <span className="break-all">{CONTACT_EMAIL}</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-60" />
+                </a>
+              </div>
             </div>
             {/* Explore */}
             <nav aria-label={t.footerExplore}>
