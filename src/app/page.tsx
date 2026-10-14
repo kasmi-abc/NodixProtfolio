@@ -45,6 +45,7 @@ import {
   Languages,
   ArrowUp,
   ArrowUpRight,
+  MapPin,
 } from "lucide-react";
 
 /* ================= i18n ================= */
@@ -158,12 +159,12 @@ const dict = {
     stackKicker: "TECH STACK",
     stackTitle: "Tools behind the systems",
     stackRows: [
-      ["AI", "Google Gemini"],
-      ["Automation", "n8n"],
-      ["Communication", "WhatsApp / Telegram"],
-      ["Database", "Airtable / PostgreSQL"],
-      ["Integration", "APIs / Webhooks"],
-      ["Voice", "VoiceRSS"],
+      ["AI", "Google Gemini / GPT-4o / Claude / DeepSeek / Grok / +more"],
+      ["Automation", "n8n / Make / Zapier / +more"],
+      ["Communication", "WhatsApp / Telegram / Instagram / Messenger / Email / +more"],
+      ["Database", "Airtable / PostgreSQL / Supabase / Google Sheets / Notion / +more"],
+      ["Integration", "APIs / Webhooks / Shopify / WooCommerce / +more"],
+      ["Voice", "VoiceRSS / ElevenLabs / Whisper / +more"],
     ],
     stackNote: "We sell the system and the result — not the tool.",
     capKicker: "CAPABILITIES",
@@ -176,6 +177,26 @@ const dict = {
     ],
     nodixKicker: "ABOUT NODIX",
     nodixTitle: "Building under NODIX — We build AI systems for businesses.",
+    testiKicker: "TESTIMONIALS",
+    testiTitle: "What clients say",
+    testiNote: "Replace these examples with your real clients as soon as you have them.",
+    testimonials: [
+      { n: "Phone Store Owner", r: "WhatsApp automation", x: "He automated our WhatsApp replies. We answer faster and miss fewer orders." },
+      { n: "Clothing Store Owner", r: "Instagram + WhatsApp", x: "Clear process: understand, build, test, deploy. The bot handles FAQs and forwards serious buyers." },
+      { n: "Medical Clinic", r: "Appointment automation", x: "Practical system, not just a chatbot — appointment reminders and patient follow-up on autopilot." },
+    ],
+    faqKicker: "FAQ",
+    faqTitle: "Questions before you start",
+    faqs: [
+      { q: "How long does a system take?", a: "Simple automation: 3–7 days. Full AI support + sales system: 2–4 weeks depending on your data." },
+      { q: "What do you need from me?", a: "Your products list, FAQs, and access to WhatsApp/Instagram + where orders are stored. I handle the rest." },
+      { q: "Do you work with small stores?", a: "Yes — e-commerce, clothing, phones, services. If you get repeated messages daily, automation pays for itself." },
+      { q: "What if the AI doesn't know the answer?", a: "It hands off to a human with full conversation context. No lost customer." },
+      { q: "Support after delivery?", a: "Testing + deployment included, then optional maintenance when you add products or channels." },
+    ],
+    videoKicker: "LIVE DEMO",
+    videoTitle: "Watch the system work",
+    videoSub: "Real screen recording — no slides.",
     formKicker: "06 — START A PROJECT",
     formTitle: "Client Project Form",
     formSub: "Tell me about your business and what you want to automate.",
@@ -193,15 +214,28 @@ const dict = {
     formTypes: ["E-commerce", "Clothing", "Shoes", "Phones", "Computers", "Supplements", "Services", "Other"],
     formNeeds: ["AI Customer Support", "AI Sales Agent", "WhatsApp Automation", "Instagram Automation", "Telegram Automation", "Business Workflow Automation", "Custom AI System"],
     submit: "Build My System",
-    errFields: "Please fill Your Name, Contact and Problem fields.",
+    errFields: "Please check the highlighted fields.",
     errNeeds: "Please select at least one service you need.",
+    errName: "Name must be 2–80 characters.",
+    errEmail: "Enter a valid email address (name@mail.com).",
+    errPhone: "Enter a valid WhatsApp number with country code (e.g. +213...).",
+    errHandle: "Enter a valid Instagram @handle, email or phone.",
+    errProblem: "Describe your problem in at least 10 characters.",
+    errMany: "Too many tries. Please wait 10 minutes and retry.",
     sentTitle: "Request received",
     sentAnother: "Send another request",
+    locationKicker: "BASE",
+    locationTitle: "Based in Algeria",
+    locationSub: "Open to remote collaboration worldwide.",
+    locationBase: "Algeria",
+    locationMeta: "GMT+1 • Remote-friendly",
+    locationOpen: "Open in Google Maps",
     contactKicker: "07 — CONTACT",
     contactTitle: "Have a project in mind?",
     contactSub: "Have a business problem that could be automated? Let us build your system.",
     contactCards: [
       ["WhatsApp", "Fast reply"],
+      ["Telegram", "@nodix_core"],
       ["Email", "Detailed projects"],
       ["Instagram", "Follow the work"],
     ],
@@ -219,7 +253,10 @@ const dict = {
     footerTop: "Back to top",
     privacyNote: "Your details are only used to contact you about your project.",
     sending: "Sending...",
-    errSend: "Could not send right now. Please try again or reach me on Instagram.",
+    errSend: "Could not send right now. Please try again or send via WhatsApp below.",
+    sendWa: "Send via WhatsApp",
+    sendEmail: "Send via Email",
+    sentHint: "For instant delivery, also forward your request:",
   },
   ar: {
     dir: "rtl" as const,
@@ -327,12 +364,12 @@ const dict = {
     stackKicker: "التقنيات",
     stackTitle: "الأدوات خلف الأنظمة",
     stackRows: [
-      ["الذكاء الاصطناعي", "Google Gemini"],
-      ["الأتمتة", "n8n"],
-      ["التواصل", "واتساب / تيليجرام"],
-      ["قواعد البيانات", "Airtable / PostgreSQL"],
-      ["الربط", "APIs / Webhooks"],
-      ["الصوت", "VoiceRSS"],
+      ["الذكاء الاصطناعي", "Google Gemini / GPT-4o / Claude / DeepSeek / Grok / +more"],
+      ["الأتمتة", "n8n / Make / Zapier / +more"],
+      ["التواصل", "واتساب / تيليجرام / إنستغرام / ماسنجر / إيميل / +more"],
+      ["قواعد البيانات", "Airtable / PostgreSQL / Supabase / Google Sheets / Notion / +more"],
+      ["الربط", "APIs / Webhooks / Shopify / WooCommerce / +more"],
+      ["الصوت", "VoiceRSS / ElevenLabs / Whisper / +more"],
     ],
     stackNote: "نبيع النظام والنتيجة — وليس الأداة.",
     capKicker: "القدرات",
@@ -345,6 +382,26 @@ const dict = {
     ],
     nodixKicker: "عن NODIX",
     nodixTitle: "نبني تحت NODIX — نبني أنظمة ذكاء اصطناعي للشركات.",
+    testiKicker: "آراء العملاء",
+    testiTitle: "ماذا يقول العملاء",
+    testiNote: "استبدل هذه الأمثلة بعملائك الحقيقيين فور توفرهم.",
+    testimonials: [
+      { n: "صاحب محل هواتف", r: "أتمتة واتساب", x: "أتمت لنا الرد على واتساب. نرد أسرع ونضيع طلبات أقل." },
+      { n: "صاحب محل ملابس", r: "إنستغرام + واتساب", x: "منهجية واضحة: فهم وبناء واختبار وإطلاق. البوت يرد على الأسئلة ويحول الجادين للشراء." },
+      { n: "عيادة طبية", r: "أتمتة المواعيد", x: "نظام عملي وليس مجرد دردشة — تذكير بالمواعيد ومتابعة المرضى تلقائياً." },
+    ],
+    faqKicker: "أسئلة شائعة",
+    faqTitle: "أسئلة قبل أن تبدأ",
+    faqs: [
+      { q: "كم تستغرق بناء النظام؟", a: "أتمتة بسيطة: 3–7 أيام. نظام دعم + مبيعات كامل: 2–4 أسابيع حسب بياناتك." },
+      { q: "ماذا تحتاج مني؟", a: "قائمة منتجاتك وأسئلتك المتكررة ووصول لواتساب/إنستغرام ومكان تخزين الطلبات. الباقي عليّ." },
+      { q: "هل تعمل مع المتاجر الصغيرة؟", a: "نعم — تجارة إلكترونية، ملابس، هواتف، خدمات. إذا تصلك رسائل متكررة يومياً، الأتمتة تربحك." },
+      { q: "ماذا لو لم يعرف الذكاء الإجابة؟", a: "يحول لموظف بشري مع كامل سياق المحادثة. لا يضيع أي زبون." },
+      { q: "هل يوجد دعم بعد التسليم؟", a: "الاختبار والإطلاق مشمولان، ثم صيانة اختيارية عند إضافة منتجات أو قنوات." },
+    ],
+    videoKicker: "عرض حي",
+    videoTitle: "شاهد النظام يعمل",
+    videoSub: "تسجيل شاشة حقيقي — بدون شرائح.",
     formKicker: "06 — ابدأ مشروعك",
     formTitle: "استمارة مشروع العميل",
     formSub: "أخبرني عن عملك وما تريد أتمتته.",
@@ -362,15 +419,28 @@ const dict = {
     formTypes: ["تجارة إلكترونية", "ملابس", "أحذية", "هواتف", "حواسيب", "مكملات", "خدمات", "أخرى"],
     formNeeds: ["دعم عملاء بالذكاء الاصطناعي", "وكيل مبيعات", "أتمتة واتساب", "أتمتة إنستغرام", "أتمتة تيليجرام", "أتمتة سير العمل", "نظام مخصص"],
     submit: "ابنِ نظامي",
-    errFields: "يرجى ملء الاسم وجهة الاتصال والمشكلة.",
+    errFields: "يرجى مراجعة الحقول المحددة بالأحمر.",
     errNeeds: "يرجى اختيار خدمة واحدة على الأقل.",
+    errName: "الاسم لازم يكون من حرفين إلى 80 حرف.",
+    errEmail: "أدخل إيميل صحيح (name@mail.com).",
+    errPhone: "أدخل رقم واتساب صحيح مع رمز الدولة (مثال +213...).",
+    errHandle: "أدخل @إنستغرام صحيح أو إيميل أو هاتف.",
+    errProblem: "اشرح مشكلتك في 10 أحرف على الأقل.",
+    errMany: "محاولات كثيرة. انتظر 10 دقائق وحاول مجدداً.",
     sentTitle: "تم استلام الطلب",
     sentAnother: "إرسال طلب آخر",
+    locationKicker: "الموقع",
+    locationTitle: "مقيم في الجزائر",
+    locationSub: "منفتح على العمل عن بعد مع الجميع.",
+    locationBase: "الجزائر",
+    locationMeta: "GMT+1 • عمل عن بعد",
+    locationOpen: "فتح في خرائط جوجل",
     contactKicker: "07 — تواصل",
     contactTitle: "هل لديك مشروع؟",
     contactSub: "هل لديك مشكلة في عملك يمكن أتمتتها؟ لنبنِ نظامك.",
     contactCards: [
       ["واتساب", "رد سريع"],
+      ["تيليجرام", "@nodix_core"],
       ["إيميل", "للمشاريع التفصيلية"],
       ["إنستغرام", "تابع الأعمال"],
     ],
@@ -388,7 +458,10 @@ const dict = {
     footerTop: "العودة للأعلى",
     privacyNote: "بياناتك تُستخدم فقط للتواصل معك بخصوص مشروعك.",
     sending: "جارٍ الإرسال...",
-    errSend: "تعذر الإرسال الآن. حاول مجدداً أو تواصل عبر إنستغرام.",
+    errSend: "تعذر الإرسال الآن. حاول مجدداً أو أرسل عبر واتساب بالأسفل.",
+    sendWa: "إرسال عبر واتساب",
+    sendEmail: "إرسال عبر إيميل",
+    sentHint: "لضمان الوصول الفوري، أعد توجيه طلبك أيضاً:",
   },
 };
 
@@ -400,11 +473,26 @@ const stackIcons = [Sparkles, Workflow, MessageCircle, Database, Plug, Mic];
 const capIcons = [Brain, Zap, Briefcase, MessagesSquare];
 const caseIcons = [Search, ShoppingCart, Users, Mic, ImageIcon, ArrowLeftRight, MemoryStick];
 const aboutIcons = [Bot, Workflow, Database, Headset, Briefcase];
-const contactIcons = [Phone, Mail, Camera];
+const contactIcons = [Phone, Send, Mail, Camera];
 const nodeIcons = [MessageCircle, Bot, Database, Workflow, Send];
 
 // Official Instagram profile (single external social link)
 const INSTAGRAM_URL = "https://www.instagram.com/nodix.core/";
+
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "213655886880";
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "kasmihaithem3@gmail.com";
+const TELEGRAM_URL = process.env.NEXT_PUBLIC_TELEGRAM_URL || "https://t.me/nodix_core";
+// فيديو العرض: ملف محلي + يمكن تجاوزه عبر NEXT_PUBLIC_DEMO_VIDEO_URL
+const DEMO_VIDEO_URL = process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || "/nodix-demo.mp4";
+
+function youtubeEmbed(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{6,})/);
+  return m ? `https://www.youtube.com/embed/${m[1]}` : null;
+}
+
+function buildLeadMessage(form: { name: string; business: string; businessType: string; needs: string[]; problem: string; channel: string; contact: string }) {
+  return `New project request — NODIX\nName: ${form.name}\nBusiness: ${form.business}\nType: ${form.businessType}\nNeeds: ${form.needs.join(", ")}\nProblem: ${form.problem}\nPreferred channel: ${form.channel}\nContact: ${form.contact}`;
+}
 
 // Brand glyph (lucide no longer ships brand icons)
 function InstagramIcon({ className = "" }: { className?: string }) {
@@ -582,9 +670,20 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
   const t: Dict = dict[lang];
 
+  // 8) persist language choice
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem("nodix-lang");
+      if (saved === "ar" || saved === "en") setLang(saved);
+    } catch { /* ignore */ }
+  }, []);
+
   useEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = t.dir;
+    try {
+      window.localStorage.setItem("nodix-lang", lang);
+    } catch { /* ignore */ }
   }, [lang, t.dir]);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -599,9 +698,11 @@ export default function Home() {
   });
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErr, setFieldErr] = useState<{ name?: string; contact?: string; problem?: string; needs?: string }>({});
   const [sending, setSending] = useState(false);
-  // Optional POST target (n8n webhook, Formspree). Unset = local confirm only.
-  const ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+  // 3) honeypot + time trap refs (bots fill hidden field / submit instantly)
+  const [honeypot, setHoneypot] = useState("");
+  const startedAt = useRef(Date.now());
 
   const toggleNeed = (v: string) =>
     setForm((f) => ({
@@ -609,36 +710,79 @@ export default function Home() {
       needs: f.needs.includes(v) ? f.needs.filter((x) => x !== v) : [...f.needs, v],
     }));
 
-  // Validate locally, optionally POST to the configured endpoint, then confirm.
+  // 4) same strong rules as server: name 2-80, problem 10+, contact depends on channel
+  const validateLocal = () => {
+    const errs: typeof fieldErr = {};
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (form.name.trim().length < 2 || form.name.trim().length > 80) errs.name = t.errName;
+    if (form.problem.trim().length < 10) errs.problem = t.errProblem;
+    if (form.needs.length === 0) errs.needs = t.errNeeds;
+    const c = form.contact.trim();
+    if (form.channel === "Email") {
+      if (!emailRe.test(c)) errs.contact = t.errEmail;
+    } else if (form.channel === "WhatsApp") {
+      const d = c.replace(/\D/g, "");
+      if (!/^[+\d][\d\s\-().]{6,20}$/.test(c) || d.length < 7 || d.length > 15) errs.contact = t.errPhone;
+    } else if (c.length < 2 || c.length > 120) {
+      errs.contact = t.errHandle;
+    }
+    return errs;
+  };
+
+  // Validate locally, POST to /api/project (which forwards to n8n webhook server-side), then confirm.
+  // Even if webhook is not configured, we confirm + offer WhatsApp/Email fallback so no lead is lost.
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.contact.trim() || !form.problem.trim()) {
+    const errs = validateLocal();
+    setFieldErr(errs);
+    if (Object.keys(errs).length > 0) {
       setError(t.errFields);
       return;
     }
-    if (form.needs.length === 0) {
-      setError(t.errNeeds);
-      return;
-    }
     setError("");
-    if (ENDPOINT) {
-      setSending(true);
-      try {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error("send failed");
-      } catch {
+    setSending(true);
+    try {
+      const res = await fetch("/api/project", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website: honeypot, startedAt: startedAt.current }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string; field?: string };
+      if (!res.ok) {
+        if (res.status === 429) setError(t.errMany);
+        else if (data.field === "contact") {
+          if (data.error === "invalid_email") setFieldErr({ contact: t.errEmail });
+          else if (data.error === "invalid_phone") setFieldErr({ contact: t.errPhone });
+          else setFieldErr({ contact: t.errHandle });
+          setError(t.errFields);
+        } else if (data.field === "problem") {
+          setFieldErr({ problem: t.errProblem });
+          setError(t.errFields);
+        } else if (data.field === "name") {
+          setFieldErr({ name: t.errName });
+          setError(t.errFields);
+        } else {
+          setError(t.errSend);
+        }
         setSending(false);
-        setError(t.errSend);
         return;
       }
+      if (typeof window !== "undefined") {
+        // 6) conversion event for GA/Plausible if configured
+        (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push?.({ event: "lead_submit" });
+        window.dispatchEvent(new CustomEvent("nodix:lead"));
+      }
+    } catch {
       setSending(false);
+      setError(t.errSend);
+      return;
     }
+    setSending(false);
     setSent(true);
   };
+
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildLeadMessage(form))}`;
+  const mailLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`New project — ${form.name} / ${form.business}`)}&body=${encodeURIComponent(buildLeadMessage(form))}`;
 
   const toggleLang = () => {
     setLang((l) => (l === "en" ? "ar" : "en"));
@@ -922,13 +1066,26 @@ export default function Home() {
             <div className="mt-5 space-y-3 text-sm">
               {t.stackRows.map(([a, b], i) => {
                 const Icon = stackIcons[i];
+                const chips = String(b).split(" / ").map((s) => s.trim()).filter(Boolean);
                 return (
-                  <div key={a} className="card-lift flex items-center gap-3 rounded-2xl border border-nodix-line bg-nodix-bg p-3 hover:border-nodix-cyan">
+                  <div key={a} className="card-lift flex items-start gap-3 rounded-2xl border border-nodix-line bg-nodix-bg p-3 hover:border-nodix-cyan">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <span className="font-bold">{a}</span>
-                    <span className="text-nodix-muted">{b}</span>
+                    <span className="min-w-[92px] pt-1.5 font-bold">{a}</span>
+                    <span className="flex flex-wrap gap-1.5 pt-1">
+                      {chips.map((c) =>
+                        c === "+more" ? (
+                          <span key={c + a} className="rounded-full bg-nodix-dark px-2.5 py-0.5 text-[11px] font-extrabold text-nodix-cyan">
+                            +more
+                          </span>
+                        ) : (
+                          <span key={c + a} className="rounded-full border border-nodix-line bg-white px-2.5 py-0.5 text-[11px] font-medium text-nodix-muted">
+                            {c}
+                          </span>
+                        )
+                      )}
+                    </span>
                   </div>
                 );
               })}
@@ -969,6 +1126,82 @@ export default function Home() {
         </Reveal>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section id="testimonials" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-12">
+        <Reveal>
+          <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.testiKicker}</p>
+          <h2 className="mt-2 text-3xl font-extrabold">{t.testiTitle}</h2>
+        </Reveal>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {t.testimonials.map((c, i) => (
+            <Reveal key={c.n} delay={i * 100}>
+              <figure className="card-lift h-full rounded-3xl border border-nodix-line bg-white p-6 hover:border-nodix-cyan">
+                <div className="flex gap-1 text-amber-400" aria-label="5/5">
+                  {"★★★★★".split("").map((s, j) => (
+                    <span key={j} aria-hidden="true">{s}</span>
+                  ))}
+                </div>
+                <blockquote className="mt-3 text-sm leading-7 text-nodix-navy/85">“{c.x}”</blockquote>
+                <figcaption className="mt-4 border-t border-nodix-line pt-3 text-xs">
+                  <span className="block font-extrabold">{c.n}</span>
+                  <span className="text-nodix-muted">{c.r}</span>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+        <p className="mt-3 text-xs text-nodix-muted">{t.testiNote}</p>
+      </section>
+
+      {/* DEMO VIDEO — appears automatically when NEXT_PUBLIC_DEMO_VIDEO_URL is set */}
+      {DEMO_VIDEO_URL ? (
+        <section id="demo" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-12">
+          <Reveal className="text-center">
+            <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.videoKicker}</p>
+            <h2 className="mt-2 text-3xl font-extrabold">{t.videoTitle}</h2>
+            <p className="mt-2 text-sm text-nodix-muted">{t.videoSub}</p>
+          </Reveal>
+          <Reveal>
+            <div className="mt-6 overflow-hidden rounded-3xl border border-nodix-line bg-nodix-dark shadow-xl">
+              {youtubeEmbed(DEMO_VIDEO_URL) ? (
+                <iframe
+                  src={youtubeEmbed(DEMO_VIDEO_URL) as string}
+                  title={t.videoTitle}
+                  className="aspect-video w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video src={DEMO_VIDEO_URL} controls preload="metadata" className="aspect-video w-full" />
+              )}
+            </div>
+          </Reveal>
+        </section>
+      ) : null}
+
+      {/* FAQ */}
+      <section id="faq" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-12">
+        <Reveal className="text-center">
+          <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.faqKicker}</p>
+          <h2 className="mt-2 text-3xl font-extrabold">{t.faqTitle}</h2>
+        </Reveal>
+        <div className="mt-6 space-y-3">
+          {t.faqs.map((f) => (
+            <Reveal key={f.q}>
+              <details className="group rounded-2xl border border-nodix-line bg-white px-5 py-4 transition hover:border-nodix-cyan">
+                <summary className="cursor-pointer list-none text-sm font-bold [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-center justify-between gap-3">
+                    {f.q}
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-nodix-bg font-extrabold text-nodix-cyan-dark transition group-open:rotate-45">+</span>
+                  </span>
+                </summary>
+                <p className="mt-2 text-sm leading-7 text-nodix-muted">{f.a}</p>
+              </details>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* START A PROJECT FORM */}
       <section id="start-project" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-16">
         <Reveal className="text-center">
@@ -986,73 +1219,107 @@ export default function Home() {
                 ? `Thanks ${form.name}. Your project request for ${form.business || "your business"} was prepared. I will contact you via ${form.channel}: ${form.contact}.`
                 : `شكراً ${form.name}. تم تجهيز طلب مشروعك لـ ${form.business || "عملك"}. سأتواصل معك عبر ${form.channel}: ${form.contact}.`}
             </p>
+            <p className="mt-6 text-xs font-bold text-nodix-muted">{t.sentHint}</p>
+            <div className="mt-3 flex flex-wrap justify-center gap-3">
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn-dark-lift inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold text-white">
+                <Phone className="h-4 w-4" /> {t.sendWa}
+              </a>
+              <a href={mailLink} className="inline-flex items-center gap-2 rounded-full border border-nodix-line px-6 py-3 text-sm font-bold transition hover:border-nodix-cyan">
+                <Mail className="h-4 w-4" /> {t.sendEmail}
+              </a>
+            </div>
             <button onClick={() => setSent(false)} className="mt-6 rounded-full border border-nodix-line px-6 py-2.5 text-sm font-bold transition hover:border-nodix-cyan">
               {t.sentAnother}
             </button>
           </div>
         ) : (
           <Reveal>
-            <form onSubmit={submit} className="mt-8 rounded-3xl border border-nodix-line bg-white p-6 md:p-8">
+            <form onSubmit={submit} noValidate={false} className="mt-8 rounded-3xl border border-nodix-line bg-white p-6 md:p-8">
+              {/* honeypot: invisible to humans, bots fill it */}
+              <input
+                type="text"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               <div className="grid gap-5 md:grid-cols-2">
-                <label className="block">
-                  <span className="flex items-center gap-2 text-sm font-bold"><User className="h-4 w-4 text-nodix-cyan-dark" /> 1. {t.f1}</span>
-                  <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t.phName} className="mt-2 w-full rounded-2xl border border-nodix-line bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30" />
-                </label>
-                <label className="block">
-                  <span className="flex items-center gap-2 text-sm font-bold"><Building2 className="h-4 w-4 text-nodix-cyan-dark" /> 2. {t.f2}</span>
-                  <input value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} placeholder={t.phBiz} className="mt-2 w-full rounded-2xl border border-nodix-line bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30" />
-                </label>
+                <div>
+                  <label htmlFor="f-name" className="flex items-center gap-2 text-sm font-bold"><User className="h-4 w-4 text-nodix-cyan-dark" /> 1. {t.f1} *</label>
+                  <input id="f-name" required autoComplete="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t.phName} aria-invalid={!!fieldErr.name} aria-describedby={fieldErr.name ? "f-name-err" : undefined} className={`mt-2 w-full rounded-2xl border bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30 ${fieldErr.name ? "border-red-500" : "border-nodix-line"}`} />
+                  {fieldErr.name && <p id="f-name-err" className="mt-1 text-xs font-semibold text-red-600">{fieldErr.name}</p>}
+                </div>
+                <div>
+                  <label htmlFor="f-biz" className="flex items-center gap-2 text-sm font-bold"><Building2 className="h-4 w-4 text-nodix-cyan-dark" /> 2. {t.f2}</label>
+                  <input id="f-biz" autoComplete="organization" value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} placeholder={t.phBiz} className="mt-2 w-full rounded-2xl border border-nodix-line bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30" />
+                </div>
               </div>
 
-              <div className="mt-5">
-                <span className="flex items-center gap-2 text-sm font-bold"><Store className="h-4 w-4 text-nodix-cyan-dark" /> 3. {t.f3}</span>
-                <div className="mt-2 flex flex-wrap gap-2">
+              <fieldset className="mt-5">
+                <legend className="flex items-center gap-2 text-sm font-bold"><Store className="h-4 w-4 text-nodix-cyan-dark" /> 3. {t.f3}</legend>
+                <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label={t.f3}>
                   {t.formTypes.map((type) => (
-                    <button type="button" key={type} onClick={() => setForm({ ...form, businessType: type })} className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all hover:-translate-y-0.5 ${form.businessType === type ? "border-nodix-dark bg-nodix-dark text-white shadow-lg" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
+                    <button type="button" key={type} aria-pressed={form.businessType === type} onClick={() => setForm({ ...form, businessType: type })} className={`rounded-full border px-4 py-2 text-xs font-semibold transition-all hover:-translate-y-0.5 ${form.businessType === type ? "border-nodix-dark bg-nodix-dark text-white shadow-lg" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
                       {type}
                     </button>
                   ))}
                 </div>
-              </div>
+              </fieldset>
 
-              <div className="mt-5">
-                <span className="flex items-center gap-2 text-sm font-bold"><Workflow className="h-4 w-4 text-nodix-cyan-dark" /> 4. {t.f4}</span>
-                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+              <fieldset className="mt-5">
+                <legend className="flex items-center gap-2 text-sm font-bold"><Workflow className="h-4 w-4 text-nodix-cyan-dark" /> 4. {t.f4} *</legend>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2" role="group" aria-label={t.f4}>
                   {t.formNeeds.map((n) => (
-                    <button type="button" key={n} onClick={() => toggleNeed(n)} className={`flex items-center gap-2 rounded-2xl border px-4 py-2.5 text-start text-xs font-semibold transition-all ${form.needs.includes(n) ? "border-nodix-cyan-dark bg-nodix-cyan/15 shadow-sm" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
-                      <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border transition ${form.needs.includes(n) ? "border-nodix-cyan-dark bg-nodix-cyan-dark text-white" : "border-nodix-muted"}`}>
+                    <button type="button" key={n} aria-pressed={form.needs.includes(n)} onClick={() => toggleNeed(n)} className={`flex items-center gap-2 rounded-2xl border px-4 py-2.5 text-start text-xs font-semibold transition-all ${form.needs.includes(n) ? "border-nodix-cyan-dark bg-nodix-cyan/15 shadow-sm" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
+                      <span aria-hidden="true" className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border transition ${form.needs.includes(n) ? "border-nodix-cyan-dark bg-nodix-cyan-dark text-white" : "border-nodix-muted"}`}>
                         {form.needs.includes(n) && <CheckCircle2 className="h-3 w-3" />}
                       </span>
                       {n}
                     </button>
                   ))}
                 </div>
+                {fieldErr.needs && <p className="mt-1 text-xs font-semibold text-red-600">{fieldErr.needs}</p>}
+              </fieldset>
+
+              <div className="mt-5">
+                <label htmlFor="f-problem" className="flex items-center gap-2 text-sm font-bold"><FileText className="h-4 w-4 text-nodix-cyan-dark" /> 5. {t.f5} *</label>
+                <textarea id="f-problem" required value={form.problem} onChange={(e) => setForm({ ...form, problem: e.target.value })} placeholder={t.phProblem} rows={4} aria-invalid={!!fieldErr.problem} aria-describedby={fieldErr.problem ? "f-problem-err" : undefined} className={`mt-2 w-full rounded-2xl border bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30 ${fieldErr.problem ? "border-red-500" : "border-nodix-line"}`} />
+                {fieldErr.problem && <p id="f-problem-err" className="mt-1 text-xs font-semibold text-red-600">{fieldErr.problem}</p>}
               </div>
 
-              <label className="mt-5 block">
-                <span className="flex items-center gap-2 text-sm font-bold"><FileText className="h-4 w-4 text-nodix-cyan-dark" /> 5. {t.f5}</span>
-                <textarea value={form.problem} onChange={(e) => setForm({ ...form, problem: e.target.value })} placeholder={t.phProblem} rows={4} className="mt-2 w-full rounded-2xl border border-nodix-line bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30" />
-              </label>
-
               <div className="mt-5 grid gap-5 md:grid-cols-2">
-                <div>
-                  <span className="text-sm font-bold">6. {t.f6}</span>
-                  <div className="mt-2 grid grid-cols-3 gap-2">
+                <fieldset>
+                  <legend className="text-sm font-bold">6. {t.f6}</legend>
+                  <div className="mt-2 grid grid-cols-3 gap-2" role="group" aria-label={t.f6}>
                     {contactChannels.map((c) => (
-                      <button type="button" key={c.id} onClick={() => setForm({ ...form, channel: c.id })} className={`flex items-center justify-center gap-1.5 rounded-2xl border px-3 py-2.5 text-xs font-bold transition-all ${form.channel === c.id ? "border-nodix-dark bg-nodix-dark text-white shadow-lg" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
+                      <button type="button" key={c.id} aria-pressed={form.channel === c.id} onClick={() => setForm({ ...form, channel: c.id, contact: "" })} className={`flex items-center justify-center gap-1.5 rounded-2xl border px-3 py-2.5 text-xs font-bold transition-all ${form.channel === c.id ? "border-nodix-dark bg-nodix-dark text-white shadow-lg" : "border-nodix-line bg-nodix-bg hover:border-nodix-cyan"}`}>
                         <c.icon className="h-4 w-4" /> {lang === "en" ? c.id : c.id === "WhatsApp" ? "واتساب" : c.id === "Email" ? "إيميل" : "إنستغرام"}
                       </button>
                     ))}
                   </div>
+                </fieldset>
+                <div>
+                  <label htmlFor="f-contact" className="text-sm font-bold">7. {t.f7} *</label>
+                  <input
+                    id="f-contact"
+                    required
+                    value={form.contact}
+                    onChange={(e) => setForm({ ...form, contact: e.target.value })}
+                    placeholder={form.channel === "WhatsApp" ? "+213 ..." : form.channel === "Email" ? "name@mail.com" : "@username"}
+                    inputMode={form.channel === "Email" ? "email" : form.channel === "WhatsApp" ? "tel" : "text"}
+                    autoComplete={form.channel === "Email" ? "email" : "off"}
+                    aria-invalid={!!fieldErr.contact}
+                    aria-describedby={fieldErr.contact ? "f-contact-err" : undefined}
+                    className={`mt-2 w-full rounded-2xl border bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30 ${fieldErr.contact ? "border-red-500" : "border-nodix-line"}`}
+                  />
+                  {fieldErr.contact && <p id="f-contact-err" className="mt-1 text-xs font-semibold text-red-600">{fieldErr.contact}</p>}
                 </div>
-                <label className="block">
-                  <span className="text-sm font-bold">7. {t.f7}</span>
-                  <input value={form.contact} onChange={(e) => setForm({ ...form, contact: e.target.value })} placeholder={t.phContact} className="mt-2 w-full rounded-2xl border border-nodix-line bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30" />
-                </label>
               </div>
 
               {error && (
-                <p className="detail-in mt-4 flex items-center gap-2 rounded-2xl bg-red-50 p-3 text-xs font-semibold text-red-600">
+                <p role="alert" aria-live="polite" className="detail-in mt-4 flex items-center gap-2 rounded-2xl bg-red-50 p-3 text-xs font-semibold text-red-800">
                   <CircleAlert className="h-4 w-4 shrink-0" /> {error}
                 </p>
               )}
@@ -1079,35 +1346,76 @@ export default function Home() {
             <h2 className="mt-2 text-3xl font-extrabold">{t.contactTitle}</h2>
             <p className="mt-2 text-sm text-nodix-muted">{t.contactSub}</p>
           </Reveal>
-          <div className="mx-auto mt-8 grid max-w-3xl gap-4 sm:grid-cols-3">
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.contactCards.map(([a, b], i) => {
               const Icon = contactIcons[i];
+              const href =
+                i === 0
+                  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "en" ? "Hi Mister Wael, I have a project." : "سلام مستر وائل، عندي مشروع.")}`
+                  : i === 1
+                    ? TELEGRAM_URL
+                    : i === 2
+                      ? `mailto:${CONTACT_EMAIL}`
+                      : INSTAGRAM_URL;
               const card = (
                 <div className="card-lift h-full rounded-3xl border border-nodix-line bg-nodix-bg p-6 hover:border-nodix-cyan">
-                  {i === 2 ? (
+                  {i === 3 ? (
                     <InstagramIcon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
                   ) : (
                     <Icon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
                   )}
                   <p className="mt-2 flex items-center justify-center gap-1 font-bold">
                     {a}
-                    {i === 2 && <ArrowUpRight className="h-3.5 w-3.5 text-nodix-cyan-dark" />}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-nodix-cyan-dark" />
                   </p>
                   <p className="text-xs text-nodix-muted">{b}</p>
                 </div>
               );
               return (
                 <Reveal key={a} delay={i * 100}>
-                  {i === 2 ? (
-                    <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="block h-full">
-                      {card}
-                    </a>
-                  ) : (
-                    card
-                  )}
+                  <a href={href} target={i === 2 ? undefined : "_blank"} rel="noopener noreferrer" className="block h-full">
+                    {card}
+                  </a>
                 </Reveal>
               );
             })}
+          </div>
+
+          {/* Based in Algeria — country only, no wilaya */}
+          <div className="mx-auto mt-14 max-w-5xl text-center">
+            <Reveal>
+              <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.locationKicker}</p>
+              <h3 className="mt-2 text-3xl font-extrabold md:text-4xl">{t.locationTitle}</h3>
+              <p className="mt-2 text-sm text-nodix-muted">{t.locationSub}</p>
+            </Reveal>
+            <Reveal>
+              <div className="relative mt-6 overflow-hidden rounded-3xl border border-nodix-line shadow-lg">
+                <iframe
+                  title={t.locationTitle}
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-8.7%2C18.9%2C12.2%2C37.2&layer=mapnik&marker=28.03%2C1.66"
+                  className="h-[380px] w-full border-0"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-4 start-4 rounded-2xl border border-nodix-line bg-white/95 p-4 text-start shadow-xl backdrop-blur">
+                  <p className="flex items-center gap-2 text-[11px] font-extrabold tracking-[0.2em] text-nodix-cyan-dark">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
+                      <MapPin className="h-4 w-4" />
+                    </span>
+                    ALGERIA BASE
+                  </p>
+                  <p className="mt-2 font-extrabold">{t.locationBase}</p>
+                  <p className="text-xs text-nodix-muted">{t.locationMeta}</p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Algeria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-nodix-cyan-dark hover:underline"
+                  >
+                    {t.locationOpen} <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
