@@ -179,7 +179,6 @@ const dict = {
     nodixTitle: "Building under NODIX — We build AI systems for businesses.",
     testiKicker: "TESTIMONIALS",
     testiTitle: "What clients say",
-    testiNote: "Replace these examples with your real clients as soon as you have them.",
     testimonials: [
       { n: "Phone Store Owner", r: "WhatsApp automation", x: "He automated our WhatsApp replies. We answer faster and miss fewer orders." },
       { n: "Clothing Store Owner", r: "Instagram + WhatsApp", x: "Clear process: understand, build, test, deploy. The bot handles FAQs and forwards serious buyers." },
@@ -259,6 +258,8 @@ const dict = {
     footerAvailable: "Available for new projects",
     footerTop: "Back to top",
     privacyNote: "Your details are only used to contact you about your project.",
+    privacyLink: "Privacy Policy",
+    secureNote: "Never share account passwords, API keys or verification codes here — we'll use a secure channel later if needed.",
     sending: "Sending...",
     errSend: "Could not send right now. Please try again or send via WhatsApp below.",
     sendWa: "Send via WhatsApp",
@@ -391,7 +392,6 @@ const dict = {
     nodixTitle: "نبني تحت NODIX — نبني أنظمة ذكاء اصطناعي للشركات.",
     testiKicker: "آراء العملاء",
     testiTitle: "ماذا يقول العملاء",
-    testiNote: "استبدل هذه الأمثلة بعملائك الحقيقيين فور توفرهم.",
     testimonials: [
       { n: "صاحب محل هواتف", r: "أتمتة واتساب", x: "أتمت لنا الرد على واتساب. نرد أسرع ونضيع طلبات أقل." },
       { n: "صاحب محل ملابس", r: "إنستغرام + واتساب", x: "منهجية واضحة: فهم وبناء واختبار وإطلاق. البوت يرد على الأسئلة ويحول الجادين للشراء." },
@@ -471,6 +471,8 @@ const dict = {
     footerAvailable: "متاح لمشاريع جديدة",
     footerTop: "العودة للأعلى",
     privacyNote: "بياناتك تُستخدم فقط للتواصل معك بخصوص مشروعك.",
+    privacyLink: "سياسة الخصوصية",
+    secureNote: "لا تشارك كلمات مرور الحسابات أو مفاتيح API أو رموز التحقق هنا — سنستخدم قناة آمنة لاحقاً عند الحاجة.",
     sending: "جارٍ الإرسال...",
     errSend: "تعذر الإرسال الآن. حاول مجدداً أو أرسل عبر واتساب بالأسفل.",
     sendWa: "إرسال عبر واتساب",
@@ -838,7 +840,7 @@ export default function Home() {
             <a href="#services" className="transition hover:text-nodix-cyan-dark">{t.navServices}</a>
             <a href="#systems" className="transition hover:text-nodix-cyan-dark">{t.navSystems}</a>
             <a href="#process" className="transition hover:text-nodix-cyan-dark">{t.navProcess}</a>
-            <a href="#contact" className="transition hover:text-nodix-cyan-dark">{t.navContact}</a>
+            <a href="#start-project" className="transition hover:text-nodix-cyan-dark">{t.navContact}</a>
           </nav>
           <div className="hidden items-center gap-2 md:flex">
             <button
@@ -874,7 +876,7 @@ export default function Home() {
               [t.navSystems, "#systems"],
               [t.navProcess, "#process"],
               [t.navCta, "#start-project"],
-              [t.navContact, "#contact"],
+              [t.navContact, "#start-project"],
             ].map(([label, href]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2 transition hover:bg-nodix-bg">
                 {label}
@@ -1168,7 +1170,6 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-3 text-xs text-nodix-muted">{t.testiNote}</p>
       </section>
 
       {/* DEMO VIDEO — continuous silent loop beside descriptive text */}
@@ -1424,6 +1425,7 @@ export default function Home() {
                 <label htmlFor="f-problem" className="flex items-center gap-2 text-sm font-bold"><FileText className="h-4 w-4 text-nodix-cyan-dark" /> 5. {t.f5} *</label>
                 <textarea id="f-problem" required value={form.problem} onChange={(e) => setForm({ ...form, problem: e.target.value })} placeholder={t.phProblem} rows={4} aria-invalid={!!fieldErr.problem} aria-describedby={fieldErr.problem ? "f-problem-err" : undefined} className={`mt-2 w-full rounded-2xl border bg-nodix-bg px-4 py-3 text-sm outline-none transition focus:border-nodix-cyan focus:ring-2 focus:ring-nodix-cyan/30 ${fieldErr.problem ? "border-red-500" : "border-nodix-line"}`} />
                 {fieldErr.problem && <p id="f-problem-err" className="mt-1 text-xs font-semibold text-red-600">{fieldErr.problem}</p>}
+                <p className="mt-1.5 flex items-center gap-1.5 text-[11px] text-nodix-muted"><Lock className="h-3 w-3 shrink-0" /> {t.secureNote}</p>
               </div>
 
               <div className="mt-5 grid gap-5 md:grid-cols-2">
@@ -1469,7 +1471,7 @@ export default function Home() {
                 {sending ? t.sending : t.submit}{" "}
                 <ArrowRight className={`h-4 w-4 text-nodix-cyan ${t.dir === "rtl" ? "rotate-180" : ""}`} />
               </button>
-              <p className="mt-3 text-center text-[11px] text-nodix-muted">{t.privacyNote}</p>
+              <p className="mt-3 text-center text-[11px] text-nodix-muted">{t.privacyNote} <a href="/privacy" className="font-bold text-nodix-cyan-dark underline underline-offset-2 hover:no-underline">{t.privacyLink}</a></p>
             </form>
           </Reveal>
         )}
@@ -1543,7 +1545,7 @@ export default function Home() {
                   [t.navServices, "#services"],
                   [t.navSystems, "#systems"],
                   [t.navProcess, "#process"],
-                  [t.navContact, "#contact"],
+                  [t.navContact, "#start-project"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <a href={href} className="transition hover:text-nodix-cyan">{label}</a>
@@ -1577,7 +1579,7 @@ export default function Home() {
           </div>
           {/* Bottom bar */}
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row">
-            <p>{t.footerRights}</p>
+            <p className="flex items-center gap-3">{t.footerRights} <span aria-hidden="true">·</span> <a href="/privacy" className="font-bold transition hover:text-nodix-cyan">{t.privacyLink}</a></p>
             <p className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />

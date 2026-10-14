@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nodix-protfolio.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nodix-portfolio.vercel.app";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "";
 
