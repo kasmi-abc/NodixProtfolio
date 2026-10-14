@@ -204,7 +204,7 @@ const dict = {
       "Hands off to a human when it matters.",
     ],
     videoCta: "Want this for your store?",
-    formKicker: "06 — START A PROJECT",
+    formKicker: "07 — START A PROJECT",
     formTitle: "Client Project Form",
     formSub: "Tell me about your business and what you want to automate.",
     f1: "Your Name",
@@ -237,7 +237,7 @@ const dict = {
     locationBase: "Algeria",
     locationMeta: "GMT+1 • Remote-friendly",
     locationOpen: "Open in Google Maps",
-    contactKicker: "07 — CONTACT",
+    contactKicker: "06 — CONTACT",
     contactTitle: "Have a project in mind?",
     contactSub: "Have a business problem that could be automated? Let us build your system.",
     contactCards: [
@@ -416,7 +416,7 @@ const dict = {
       "يحول لموظف بشري عند الحاجة.",
     ],
     videoCta: "تحب هذا لمتجرك؟",
-    formKicker: "06 — ابدأ مشروعك",
+    formKicker: "07 — ابدأ مشروعك",
     formTitle: "استمارة مشروع العميل",
     formSub: "أخبرني عن عملك وما تريد أتمتته.",
     f1: "اسمك",
@@ -449,7 +449,7 @@ const dict = {
     locationBase: "الجزائر",
     locationMeta: "GMT+1 • عمل عن بعد",
     locationOpen: "فتح في خرائط جوجل",
-    contactKicker: "07 — تواصل",
+    contactKicker: "06 — تواصل",
     contactTitle: "هل لديك مشروع؟",
     contactSub: "هل لديك مشكلة في عملك يمكن أتمتتها؟ لنبنِ نظامك.",
     contactCards: [
@@ -1255,7 +1255,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* START A PROJECT FORM */}
+      {/* CONTACT */}
+      <section id="contact" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center">
+          <Reveal>
+            <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.contactKicker}</p>
+            <h2 className="mt-2 text-3xl font-extrabold">{t.contactTitle}</h2>
+            <p className="mt-2 text-sm text-nodix-muted">{t.contactSub}</p>
+          </Reveal>
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {t.contactCards.map(([a, b], i) => {
+              const Icon = contactIcons[i];
+              const href =
+                i === 0
+                  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "en" ? "Hi Mister Wael, I have a project." : "سلام مستر وائل، عندي مشروع.")}`
+                  : i === 1
+                    ? TELEGRAM_URL
+                    : i === 2
+                      ? `mailto:${CONTACT_EMAIL}`
+                      : INSTAGRAM_URL;
+              const card = (
+                <div className="card-lift h-full rounded-3xl border border-nodix-line bg-nodix-bg p-6 hover:border-nodix-cyan">
+                  {i === 3 ? (
+                    <InstagramIcon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
+                  ) : (
+                    <Icon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
+                  )}
+                  <p className="mt-2 flex items-center justify-center gap-1 font-bold">
+                    {a}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-nodix-cyan-dark" />
+                  </p>
+                  <p className="text-xs text-nodix-muted">{b}</p>
+                </div>
+              );
+              return (
+                <Reveal key={a} delay={i * 100}>
+                  <a href={href} target={i === 2 ? undefined : "_blank"} rel="noopener noreferrer" className="block h-full">
+                    {card}
+                  </a>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          {/* Based in Algeria — country only, no wilaya */}
+          <div className="mx-auto mt-14 max-w-5xl text-center">
+            <Reveal>
+              <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.locationKicker}</p>
+              <h3 className="mt-2 text-3xl font-extrabold md:text-4xl">{t.locationTitle}</h3>
+              <p className="mt-2 text-sm text-nodix-muted">{t.locationSub}</p>
+            </Reveal>
+            <Reveal>
+              <div className="relative mt-6 overflow-hidden rounded-3xl border border-nodix-line shadow-lg">
+                <iframe
+                  title={t.locationTitle}
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-8.7%2C18.9%2C12.2%2C37.2&layer=mapnik&marker=28.03%2C1.66"
+                  className="h-[380px] w-full border-0"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-4 start-4 rounded-2xl border border-nodix-line bg-white/95 p-4 text-start shadow-xl backdrop-blur">
+                  <p className="flex items-center gap-2 text-[11px] font-extrabold tracking-[0.2em] text-nodix-cyan-dark">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
+                      <MapPin className="h-4 w-4" />
+                    </span>
+                    ALGERIA BASE
+                  </p>
+                  <p className="mt-2 font-extrabold">{t.locationBase}</p>
+                  <p className="text-xs text-nodix-muted">{t.locationMeta}</p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Algeria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-nodix-cyan-dark hover:underline"
+                  >
+                    {t.locationOpen} <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* START A PROJECT FORM — last section before footer */}
       <section id="start-project" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-16">
         <Reveal className="text-center">
           <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.formKicker}</p>
@@ -1389,88 +1471,6 @@ export default function Home() {
             </form>
           </Reveal>
         )}
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center">
-          <Reveal>
-            <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.contactKicker}</p>
-            <h2 className="mt-2 text-3xl font-extrabold">{t.contactTitle}</h2>
-            <p className="mt-2 text-sm text-nodix-muted">{t.contactSub}</p>
-          </Reveal>
-          <div className="mx-auto mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {t.contactCards.map(([a, b], i) => {
-              const Icon = contactIcons[i];
-              const href =
-                i === 0
-                  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "en" ? "Hi Mister Wael, I have a project." : "سلام مستر وائل، عندي مشروع.")}`
-                  : i === 1
-                    ? TELEGRAM_URL
-                    : i === 2
-                      ? `mailto:${CONTACT_EMAIL}`
-                      : INSTAGRAM_URL;
-              const card = (
-                <div className="card-lift h-full rounded-3xl border border-nodix-line bg-nodix-bg p-6 hover:border-nodix-cyan">
-                  {i === 3 ? (
-                    <InstagramIcon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
-                  ) : (
-                    <Icon className="mx-auto h-6 w-6 text-nodix-cyan-dark" />
-                  )}
-                  <p className="mt-2 flex items-center justify-center gap-1 font-bold">
-                    {a}
-                    <ArrowUpRight className="h-3.5 w-3.5 text-nodix-cyan-dark" />
-                  </p>
-                  <p className="text-xs text-nodix-muted">{b}</p>
-                </div>
-              );
-              return (
-                <Reveal key={a} delay={i * 100}>
-                  <a href={href} target={i === 2 ? undefined : "_blank"} rel="noopener noreferrer" className="block h-full">
-                    {card}
-                  </a>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          {/* Based in Algeria — country only, no wilaya */}
-          <div className="mx-auto mt-14 max-w-5xl text-center">
-            <Reveal>
-              <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.locationKicker}</p>
-              <h3 className="mt-2 text-3xl font-extrabold md:text-4xl">{t.locationTitle}</h3>
-              <p className="mt-2 text-sm text-nodix-muted">{t.locationSub}</p>
-            </Reveal>
-            <Reveal>
-              <div className="relative mt-6 overflow-hidden rounded-3xl border border-nodix-line shadow-lg">
-                <iframe
-                  title={t.locationTitle}
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-8.7%2C18.9%2C12.2%2C37.2&layer=mapnik&marker=28.03%2C1.66"
-                  className="h-[380px] w-full border-0"
-                  loading="lazy"
-                />
-                <div className="absolute bottom-4 start-4 rounded-2xl border border-nodix-line bg-white/95 p-4 text-start shadow-xl backdrop-blur">
-                  <p className="flex items-center gap-2 text-[11px] font-extrabold tracking-[0.2em] text-nodix-cyan-dark">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-nodix-dark text-nodix-cyan">
-                      <MapPin className="h-4 w-4" />
-                    </span>
-                    ALGERIA BASE
-                  </p>
-                  <p className="mt-2 font-extrabold">{t.locationBase}</p>
-                  <p className="text-xs text-nodix-muted">{t.locationMeta}</p>
-                  <a
-                    href="https://www.google.com/maps/search/?api=1&query=Algeria"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-nodix-cyan-dark hover:underline"
-                  >
-                    {t.locationOpen} <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
       </section>
 
       {/* FOOTER */}
