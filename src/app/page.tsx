@@ -196,7 +196,14 @@ const dict = {
     ],
     videoKicker: "LIVE DEMO",
     videoTitle: "Watch the system work",
-    videoSub: "Real screen recording — no slides.",
+    videoSub: "Real screen recording — a store chatbot replying to customers, no slides.",
+    videoPoints: [
+      "Instant replies to customer messages — day and night.",
+      "Understands text, voice and product photos.",
+      "Searches your products and creates the order.",
+      "Hands off to a human when it matters.",
+    ],
+    videoCta: "Want this for your store?",
     formKicker: "06 — START A PROJECT",
     formTitle: "Client Project Form",
     formSub: "Tell me about your business and what you want to automate.",
@@ -401,7 +408,14 @@ const dict = {
     ],
     videoKicker: "عرض حي",
     videoTitle: "شاهد النظام يعمل",
-    videoSub: "تسجيل شاشة حقيقي — بدون شرائح.",
+    videoSub: "تسجيل شاشة حقيقي — شاتبوت متجر يرد على الزبائن، بدون شرائح.",
+    videoPoints: [
+      "رد فوري على رسائل الزبائن — ليلاً ونهاراً.",
+      "يفهم النصوص والرسائل الصوتية وصور المنتجات.",
+      "يبحث في منتجاتك وينشئ الطلب.",
+      "يحول لموظف بشري عند الحاجة.",
+    ],
+    videoCta: "تحب هذا لمتجرك؟",
     formKicker: "06 — ابدأ مشروعك",
     formTitle: "استمارة مشروع العميل",
     formSub: "أخبرني عن عملك وما تريد أتمتته.",
@@ -687,6 +701,8 @@ export default function Home() {
   }, [lang, t.dir]);
 
   const [menuOpen, setMenuOpen] = useState(false);
+  // FAQ accordion: only one answer open at a time
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [form, setForm] = useState({
     name: "",
     business: "",
@@ -1153,29 +1169,54 @@ export default function Home() {
         <p className="mt-3 text-xs text-nodix-muted">{t.testiNote}</p>
       </section>
 
-      {/* DEMO VIDEO — appears automatically when NEXT_PUBLIC_DEMO_VIDEO_URL is set */}
+      {/* DEMO VIDEO — continuous silent loop beside descriptive text */}
       {DEMO_VIDEO_URL ? (
-        <section id="demo" className="mx-auto max-w-4xl scroll-mt-20 px-4 py-12">
-          <Reveal className="text-center">
-            <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.videoKicker}</p>
-            <h2 className="mt-2 text-3xl font-extrabold">{t.videoTitle}</h2>
-            <p className="mt-2 text-sm text-nodix-muted">{t.videoSub}</p>
-          </Reveal>
-          <Reveal>
-            <div className="mt-6 overflow-hidden rounded-3xl border border-nodix-line bg-nodix-dark shadow-xl">
-              {youtubeEmbed(DEMO_VIDEO_URL) ? (
-                <iframe
-                  src={youtubeEmbed(DEMO_VIDEO_URL) as string}
-                  title={t.videoTitle}
-                  className="aspect-video w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <video src={DEMO_VIDEO_URL} controls preload="metadata" className="aspect-video w-full" />
-              )}
-            </div>
-          </Reveal>
+        <section id="demo" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-12">
+          <div className="grid items-center gap-8 md:grid-cols-2">
+            <Reveal className="order-1">
+              <div className="mx-auto w-fit overflow-hidden rounded-3xl border border-nodix-line bg-nodix-dark shadow-xl">
+                {youtubeEmbed(DEMO_VIDEO_URL) ? (
+                  <iframe
+                    src={youtubeEmbed(DEMO_VIDEO_URL) as string}
+                    title={t.videoTitle}
+                    className="aspect-video w-full min-w-[300px] md:min-w-[420px]"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : (
+                  <video
+                    src={DEMO_VIDEO_URL}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    disablePictureInPicture
+                    preload="auto"
+                    aria-label={t.videoTitle}
+                    className="h-auto max-h-[560px] w-auto max-w-full object-contain"
+                  />
+                )}
+              </div>
+            </Reveal>
+            <Reveal delay={120} className="order-2">
+              <p className="text-xs font-bold tracking-[0.25em] text-nodix-cyan-dark">{t.videoKicker}</p>
+              <h2 className="mt-2 text-3xl font-extrabold">{t.videoTitle}</h2>
+              <p className="mt-2 text-sm leading-7 text-nodix-muted">{t.videoSub}</p>
+              <ul className="mt-4 space-y-2.5">
+                {t.videoPoints.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5 text-sm font-medium">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-nodix-cyan/15 text-nodix-cyan-dark">
+                      <CheckCircle2 className="h-3.5 w-3.5" />
+                    </span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <a href="#start-project" className="btn-dark-lift mt-6 inline-flex items-center gap-2 rounded-full bg-nodix-dark px-6 py-3 text-sm font-bold text-white">
+                {t.videoCta} <ArrowRight className={`h-4 w-4 text-nodix-cyan ${t.dir === "rtl" ? "rotate-180" : ""}`} />
+              </a>
+            </Reveal>
+          </div>
         </section>
       ) : null}
 
@@ -1186,19 +1227,31 @@ export default function Home() {
           <h2 className="mt-2 text-3xl font-extrabold">{t.faqTitle}</h2>
         </Reveal>
         <div className="mt-6 space-y-3">
-          {t.faqs.map((f) => (
-            <Reveal key={f.q}>
-              <details className="group rounded-2xl border border-nodix-line bg-white px-5 py-4 transition hover:border-nodix-cyan">
-                <summary className="cursor-pointer list-none text-sm font-bold [&::-webkit-details-marker]:hidden">
-                  <span className="flex items-center justify-between gap-3">
+          {t.faqs.map((f, i) => {
+            const open = openFaq === i;
+            return (
+              <Reveal key={f.q}>
+                <div className={`rounded-2xl border bg-white px-5 py-4 transition hover:border-nodix-cyan ${open ? "border-nodix-cyan" : "border-nodix-line"}`}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(open ? null : i)}
+                    aria-expanded={open}
+                    aria-controls={`faq-a-${i}`}
+                    className="flex w-full cursor-pointer items-center justify-between gap-3 text-start text-sm font-bold"
+                  >
                     {f.q}
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-nodix-bg font-extrabold text-nodix-cyan-dark transition group-open:rotate-45">+</span>
-                  </span>
-                </summary>
-                <p className="mt-2 text-sm leading-7 text-nodix-muted">{f.a}</p>
-              </details>
-            </Reveal>
-          ))}
+                    <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-nodix-bg text-lg font-extrabold text-nodix-cyan-dark transition-transform duration-300 ${open ? "rotate-45" : ""}`} aria-hidden="true">+</span>
+                  </button>
+                  <div
+                    id={`faq-a-${i}`}
+                    className={`grid transition-all duration-300 ease-in-out ${open ? "mt-2 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <p className="overflow-hidden text-sm leading-7 text-nodix-muted">{f.a}</p>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
