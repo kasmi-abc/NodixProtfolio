@@ -186,16 +186,23 @@ export async function POST(req: Request) {
       process.env.N8N_WEBHOOK_URL ||
       process.env.NEXT_PUBLIC_FORM_ENDPOINT ||
       "";
+    const webhookSecret = process.env.NODIX_WEBHOOK_SECRET || "";
 
     let webhookSent = false;
     if (webhook) {
       try {
+        // 10s timeout: n8n answers 200 immediately (Respond: Immediately),
+        // so anything slower is treated as failure without blocking the user.
         const res = await fetch(webhook, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            ...(webhookSecret ? { "x-nodix-secret": webhookSecret } : {}),
+          },
           body: JSON.stringify(enriched),
+          signal: AbortSignal.timeout(10_000),
         });
-        webhookSent = res.ok;
+        webhookSent = res.ok; // any 2xx counts as delivered
         if (!res.ok) console.error("webhook forward failed:", res.status);
       } catch (err) {
         console.error("webhook forward error:", err);
