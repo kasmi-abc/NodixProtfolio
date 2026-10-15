@@ -112,8 +112,8 @@ const dict = {
     projects: [
       {
         no: "Project 01",
-        title: "WhatsApp AI Customer Support System",
-        platform: "WhatsApp",
+        title: "Cross-Platform AI Customer Support System",
+        platform: "All platforms",
         type: "AI Customer Support + Sales",
         caps: ["Text understanding", "Voice input", "Image understanding", "Product search", "Order creation", "Customer management", "Human handoff", "Memory"],
         live: true,
@@ -187,7 +187,7 @@ const dict = {
     faqKicker: "FAQ",
     faqTitle: "Questions before you start",
     faqs: [
-      { q: "How long does a system take?", a: "Simple automation: 3–7 days. Full AI support + sales system: 2–4 weeks depending on your data." },
+      { q: "How long does a system take?", a: "Simple automation: 1–4 days. Full AI support + sales system: 1–3 weeks depending on your data." },
       { q: "What do you need from me?", a: "Your products list, FAQs, and access to WhatsApp/Instagram + where orders are stored. I handle the rest." },
       { q: "Do you work with small stores?", a: "Yes — e-commerce, clothing, phones, services. If you get repeated messages daily, automation pays for itself." },
       { q: "What if the AI doesn't know the answer?", a: "It hands off to a human with full conversation context. No lost customer." },
@@ -247,7 +247,7 @@ const dict = {
     ],
     footerRole: "AI AUTOMATION and SYSTEMS",
     footerBuilt: "Built under NODIX",
-    footerRights: "© 2026 Mister Wael × NODIX",
+    footerRights: "© 2026 Mister Wael × NODIX SYSTEMS",
     footerProjects: "Projects",
     footerTagline: "AI systems that automate businesses — support, sales and workflows for stores and companies.",
     footerExplore: "Explore",
@@ -325,8 +325,8 @@ const dict = {
     projects: [
       {
         no: "مشروع 01",
-        title: "نظام دعم عملاء واتساب بالذكاء الاصطناعي",
-        platform: "واتساب",
+        title: "نظام دعم عملاء بالذكاء الاصطناعي لجميع المنصات",
+        platform: "كل المنصات",
         type: "دعم عملاء + مبيعات",
         caps: ["فهم النصوص", "إدخال صوتي", "فهم الصور", "البحث في المنتجات", "إنشاء الطلبات", "إدارة العملاء", "التحويل لموظف", "الذاكرة"],
         live: true,
@@ -400,7 +400,7 @@ const dict = {
     faqKicker: "أسئلة شائعة",
     faqTitle: "أسئلة قبل أن تبدأ",
     faqs: [
-      { q: "كم تستغرق بناء النظام؟", a: "أتمتة بسيطة: 3–7 أيام. نظام دعم + مبيعات كامل: 2–4 أسابيع حسب بياناتك." },
+      { q: "كم تستغرق بناء النظام؟", a: "أتمتة بسيطة: 1–4 أيام. نظام دعم + مبيعات كامل: 1–3 أسابيع حسب بياناتك." },
       { q: "ماذا تحتاج مني؟", a: "قائمة منتجاتك وأسئلتك المتكررة ووصول لواتساب/إنستغرام ومكان تخزين الطلبات. الباقي عليّ." },
       { q: "هل تعمل مع المتاجر الصغيرة؟", a: "نعم — تجارة إلكترونية، ملابس، هواتف، خدمات. إذا تصلك رسائل متكررة يومياً، الأتمتة تربحك." },
       { q: "ماذا لو لم يعرف الذكاء الإجابة؟", a: "يحول لموظف بشري مع كامل سياق المحادثة. لا يضيع أي زبون." },
@@ -460,7 +460,7 @@ const dict = {
     ],
     footerRole: "الأتمتة وأنظمة الذكاء الاصطناعي",
     footerBuilt: "صُنع تحت NODIX",
-    footerRights: "© 2026 مستر وائل × NODIX",
+    footerRights: "© 2026 مستر وائل × NODIX SYSTEMS",
     footerProjects: "المشاريع",
     footerTagline: "أنظمة ذكاء اصطناعي تُؤتمت الشركات — دعم ومبيعات وسير عمل للمتاجر والشركات.",
     footerExplore: "استكشف",
