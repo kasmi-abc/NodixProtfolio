@@ -206,7 +206,10 @@ export async function POST(req: Request) {
       console.log("project request:", enriched);
     }
 
-    return NextResponse.json({ ok: true, telegramSent, webhookSent });
+    // Honest signal: true only if at least one server-side delivery worked.
+    // The UI shows a different screen when nothing was delivered.
+    const delivered = telegramSent || webhookSent;
+    return NextResponse.json({ ok: true, delivered, telegramSent, webhookSent });
   } catch (err) {
     console.error("api/project error:", err);
     return NextResponse.json(

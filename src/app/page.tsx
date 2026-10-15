@@ -229,6 +229,8 @@ const dict = {
     errProblem: "Describe your problem in at least 10 characters.",
     errMany: "Too many tries. Please wait 10 minutes and retry.",
     sentTitle: "Request received",
+    fwdTitle: "One last step — forward it now",
+    fwdSub: "Your request is ready, but automatic delivery is off. Tap WhatsApp or Email below — your message is pre-filled so nothing is lost.",
     sentAnother: "Send another request",
     locationKicker: "BASE",
     locationTitle: "Based in Algeria",
@@ -442,6 +444,8 @@ const dict = {
     errProblem: "اشرح مشكلتك في 10 أحرف على الأقل.",
     errMany: "محاولات كثيرة. انتظر 10 دقائق وحاول مجدداً.",
     sentTitle: "تم استلام الطلب",
+    fwdTitle: "خطوة أخيرة — أرسله الآن",
+    fwdSub: "طلبك جاهز، لكن الإرسال التلقائي متوقف. اضغط واتساب أو إيميل بالأسفل — رسالتك مجهزة مسبقاً ولن يضيع شيء.",
     sentAnother: "إرسال طلب آخر",
     locationKicker: "الموقع",
     locationTitle: "مقيم في الجزائر",
@@ -715,6 +719,8 @@ export default function Home() {
     contact: "",
   });
   const [sent, setSent] = useState(false);
+  // true only if the server really delivered to Telegram/webhook
+  const [delivered, setDelivered] = useState(true);
   const [error, setError] = useState("");
   const [fieldErr, setFieldErr] = useState<{ name?: string; contact?: string; problem?: string; needs?: string }>({});
   const [sending, setSending] = useState(false);
@@ -765,7 +771,7 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, website: honeypot, startedAt: startedAt.current }),
       });
-      const data = (await res.json().catch(() => ({}))) as { error?: string; field?: string };
+      const data = (await res.json().catch(() => ({}))) as { error?: string; field?: string; delivered?: boolean };
       if (!res.ok) {
         if (res.status === 429) setError(t.errMany);
         else if (data.field === "contact") {
@@ -796,6 +802,7 @@ export default function Home() {
       return;
     }
     setSending(false);
+    setDelivered(data.delivered !== false);
     setSent(true);
   };
 
@@ -1351,11 +1358,13 @@ export default function Home() {
         {sent ? (
           <div className="detail-in mt-8 rounded-3xl border border-nodix-cyan bg-white p-10 text-center">
             <CheckCircle2 className="mx-auto h-12 w-12 text-nodix-cyan-dark" />
-            <h3 className="mt-4 text-xl font-extrabold">{t.sentTitle}</h3>
+            <h3 className="mt-4 text-xl font-extrabold">{delivered ? t.sentTitle : t.fwdTitle}</h3>
             <p className="mt-2 text-sm text-nodix-muted">
-              {lang === "en"
-                ? `Thanks ${form.name}. Your project request for ${form.business || "your business"} was prepared. I will contact you via ${form.channel}: ${form.contact}.`
-                : `شكراً ${form.name}. تم تجهيز طلب مشروعك لـ ${form.business || "عملك"}. سأتواصل معك عبر ${form.channel}: ${form.contact}.`}
+              {delivered
+                ? lang === "en"
+                  ? `Thanks ${form.name}. Your project request for ${form.business || "your business"} was delivered. I will contact you via ${form.channel}: ${form.contact}.`
+                  : `شكراً ${form.name}. وصل طلب مشروعك لـ ${form.business || "عملك"}. سأتواصل معك عبر ${form.channel}: ${form.contact}.`
+                : t.fwdSub}
             </p>
             <p className="mt-6 text-xs font-bold text-nodix-muted">{t.sentHint}</p>
             <div className="mt-3 flex flex-wrap justify-center gap-3">
