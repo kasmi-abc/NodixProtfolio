@@ -765,6 +765,7 @@ export default function Home() {
     }
     setError("");
     setSending(true);
+    let deliveredFlag = true;
     try {
       const res = await fetch("/api/project", {
         method: "POST",
@@ -791,6 +792,7 @@ export default function Home() {
         setSending(false);
         return;
       }
+      deliveredFlag = data.delivered !== false;
       if (typeof window !== "undefined") {
         // 6) conversion event for GA/Plausible if configured
         (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push?.({ event: "lead_submit" });
@@ -802,7 +804,7 @@ export default function Home() {
       return;
     }
     setSending(false);
-    setDelivered(data.delivered !== false);
+    setDelivered(deliveredFlag);
     setSent(true);
   };
 
